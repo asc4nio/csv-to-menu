@@ -115,8 +115,19 @@ h1, h2, h3 {
 .ingr{
     margin-bottom: 0.5rem;
 }
+
+.item-foot {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 1rem ;
+}
+
 .icons{
     margin-bottom: 0.5rem;
+    height: 1rem;
 }
 .cost{}
 
@@ -180,6 +191,10 @@ nav.is--fav{
 
 .fav-title{
     margin-bottom: 1rem;
+}
+
+#no-fav-text{
+    font-size: 1rem;
 }
 
 #clear-favs{

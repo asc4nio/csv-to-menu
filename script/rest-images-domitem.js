@@ -45,19 +45,20 @@ export function createDomItem(item, index){
 
     $("<div>", { "class": "ingr" }).html(item.ingredients).appendTo($divItem)
 
-    // let $divIcons = $("<div>", { "class": "icons" }).appendTo($divItem)
+    let $divFoot = $("<div>", { "class": "item-foot" }).appendTo($divItem)
 
+    $("<h3>", { "class": "cost" }).html(item.cost).appendTo($divFoot)
+    
     let $divIcons= $('<a>',{
-        // title: 'Blah',
         href: '#',
         class: 'icons',
         click: (e)=>{
             e.preventDefault()
             e.stopPropagation()
         }
-    }).appendTo($divItem);
+    }).appendTo($divFoot);
 
-    $("<h3>", { "class": "cost" }).html(item.cost).appendTo($divItem)
+
 
 
     // icons
