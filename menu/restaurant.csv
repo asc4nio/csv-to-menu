@@ -1,0 +1,12 @@
+Nome del piatto,Ingredienti,Costo,Categoria,Glutenfree,Surgelato,Vegetariano
+Tagliere della Casa,"Salumi e formaggi a Km 0, taralli di produzione propria, miele biologico.",12,Antipasti,FALSE,FALSE,FALSE
+"Polpettine speziate con granella di arachidi","Polpettine fritte di zucchine, curry, paprika, con panatura di granella di arachidi tostate.",6,Antipasti,FALSE,FALSE,TRUE
+Involtini di Bresaola e Burrata,"Bresaola della Valtellina IGP punta d'anca, farcita con Burrata di Andria IGP ed erba cipollina.",8,Antipasti,TRUE,FALSE,FALSE
+Spaghetti allo scoglio,"Pasta di Gragnano IGP, con cozze, vongole, gamberi e calamari.",14,Primi,FALSE,TRUE,FALSE
+"Lasagnetta vegetariana con granella di mandorle","Sfoglia di pasta acqua e farina, ragù vegetariano di melanzane e pomodoro San Marzano DOP, basilico e granella di mandorle.",9,Primi,FALSE,FALSE,TRUE
+Fettuccine al Ragù di Cervo,"Pasta all'uovo fatta in casa, Ragù di Cervo e formaggio Piave DOP.","12,5",Primi,FALSE,FALSE,FALSE
+Grigliata mista di Carne,"Carne a Km 0 (pollo, manzo, agnello), cotta su spiedo. Accompagnata da verdure biologiche di stagione e salse fatte in casa.",20,Secondi,TRUE,FALSE,FALSE
+Grigliata mista di Mare,"Pescato del giorno, molluschi e crostacei cotti alla griglia.",22,Secondi,TRUE,TRUE,FALSE
+Fungo Portobello ripieno,"Fungo Portobello cotto su griglia, ripieno di verdure di stagione e pesto fatto in casa. Servito con salsa di senape.",10,Secondi,TRUE,FALSE,TRUE
+Tiramisù al bicchiere,"Savoiardi al caffè di nostra produzione, crema al mascarpone, spolverizzato con cacao amaro e cannella in polvere.",7,Dessert,FALSE,FALSE,FALSE
+Semifreddo al Cocco,"Mousse al cocco, composta di passion fruit e foglie di menta.",7,Dessert,TRUE,FALSE,FALSE

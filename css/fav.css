@@ -1,0 +1,179 @@
+.scrolloff {
+    overflow: none;
+}
+
+body{
+    font-family:'Courier New', Courier, monospace;
+    margin: 0em;
+}
+header{
+    margin-bottom: 4em;
+}
+.subheader{
+    font-size: 1.5rem;
+}
+main {
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* 
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch; 
+    */
+
+    padding: 1em;
+    /* padding-bottom: 6rem; */
+
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+
+.ui-accordion {}
+
+.ui-accordion-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: aliceblue;
+    padding: 0.5rem;
+
+    /* margin-bottom: 1rem; */
+}
+
+.icon-toggle-img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.ui-accordion-header-active{
+    background-color: aquamarine;
+}
+
+.ui-accordion-header-collapsed{
+    margin-bottom: 1rem;
+}
+
+.icon-toggle{
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.ui-accordion-header-collapsed .icon-toggle{
+    transform: rotateZ(180deg);
+}
+
+.ui-accordion-content{
+    padding: 1rem 0.5rem;
+    /* background-color: rgb(220, 255, 243); */
+    margin-bottom: 1rem;
+}
+.ui-accordion-content-active{
+}
+
+.item {
+    background-color: rgb(220, 255, 243);
+    padding: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    margin-bottom: 2rem;
+}
+
+.item.is--fav {
+    background-color: rgb(161, 255, 224)
+}
+
+.item-head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.fav-icon{
+    margin-left: 1rem;
+    height: 1rem;
+}
+
+.title{
+    margin-bottom: 0.5rem;
+}
+.ingr{
+    margin-bottom: 0.5rem;
+}
+.icons{
+    margin-bottom: 0.5rem;
+}
+.cost{}
+
+.cost::before{
+    content: '€ ';
+}
+
+
+button{
+    background-color: transparent;
+    border: none;
+}
+
+nav{
+    height: 4rem;
+
+    position: fixed;
+    z-index: 2;
+    top: auto;
+    left: 0.5rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    background-color: aquamarine;
+}
+
+nav.is--fav{
+    background-color: white;
+}
+
+#fav{
+    position: fixed;
+    top: 0rem;
+    left: 0rem;
+    bottom: 0rem;
+    right: 0rem;
+
+    overflow-y: auto;
+
+    padding-bottom: 4em;
+
+    background-color: aquamarine;
+
+}
+
+.fav-inner{
+    margin: 2rem;
+}
+
+.fav-title{
+    margin-bottom: 1rem;
+}
+#clear-favs{
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-decoration: underline;
+
+    margin-bottom: 2rem;
+
+}

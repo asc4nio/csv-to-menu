@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <meta name="description" content="Webpage description goes here" /> -->
+    <meta charset="utf-8">
+    <title>restaurant_csv-to-menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="asc4nio">
+
+    <!-- <link rel="stylesheet" href="./libs/jquery-ui-flat-theme-master/jquery-ui.css"> -->
+    <link rel="stylesheet" href="./css/restaurant.css">
+
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1> Restaurant </h1>
+            <p class="subheader">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pretium ac nunc sit amet rhoncus. Nulla purus sapien, hendrerit ut dolor sed, placerat gravida neque.
+            </p>
+        </header>
+        <div id="accordion">
+            <div class="food-title">
+                <h2>Antipasti</h2>
+                <div class="icon-toggle">
+                    <img class="icon-toggle-img" src="./img/restaurant/icon-accordion.svg"/>
+                </div>
+            </div>
+            <div class="food-category">
+                <div id="antipasti" class="items-container"></div>
+            </div>
+            <div class="food-title">
+                <h2>Primi</h2>
+                <div class="icon-toggle">
+                    <img class="icon-toggle-img" src="./img/restaurant/icon-accordion.svg"/>
+                </div>
+            </div>
+            <div class="food-category">
+                <div id="primi" class="items-container"></div>
+            </div>
+            <div class="food-title">
+                <h2>Secondi</h2>
+                <div class="icon-toggle">
+                    <img class="icon-toggle-img" src="./img/restaurant/icon-accordion.svg"/>
+                </div>
+            </div>
+            <div class="food-category">
+                <div id="secondi" class="items-container"></div>
+            </div>
+            <div class="food-title">
+                <h2>Dessert</h2>
+                <div class="icon-toggle">
+                    <img class="icon-toggle-img" src="./img/restaurant/icon-accordion.svg"/>
+                </div>
+            </div>
+            <div class="food-category">
+                <div id="dessert" class="items-container"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./libs/jquery-3.6.4.min.js"></script>
+    <script src="./libs/jquery-ui-1.13.2/jquery-ui.js"></script>
+
+    <script type="module" src="./script/restaurant.js"></script>
+</body>
+
+</html>

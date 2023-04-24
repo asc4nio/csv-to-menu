@@ -1,0 +1,96 @@
+body{
+    font-family:'Courier New', Courier, monospace;
+    margin: 0em;
+}
+header{
+    margin-bottom: 16em;
+}
+.subheader{
+    font-size: 1.5rem;
+}
+main {
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* 
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch; 
+    */
+
+    padding: 1em;
+
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+
+.ui-accordion {}
+
+.ui-accordion-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: aliceblue;
+    padding: 0.5rem;
+
+    /* margin-bottom: 1rem; */
+}
+
+.icon-toggle-img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.ui-accordion-header-active{
+    background-color: aquamarine;
+}
+
+.ui-accordion-header-collapsed{
+    margin-bottom: 1rem;
+}
+
+.icon-toggle{
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.ui-accordion-header-collapsed .icon-toggle{
+    transform: rotateZ(180deg);
+}
+
+.ui-accordion-content{
+    padding: 1rem 0.5rem;
+    background-color: rgb(220, 255, 243);
+    margin-bottom: 1rem;
+}
+.ui-accordion-content-active{
+}
+
+.item {
+    margin-bottom: 2rem;
+}
+
+.title{
+    margin-bottom: 0.5rem;
+}
+.ingr{
+    margin-bottom: 0.5rem;
+}
+.icons{
+    margin-bottom: 0.5rem;
+}
+.cost{}
+
+.cost::before{
+    content: '€ ';
+}
