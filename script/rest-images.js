@@ -56,6 +56,27 @@ let pageInteractions = () => {
         header: ".food-title"
     });
 
+    $( "#dialog" ).dialog({
+        autoOpen: false,
+        modal: true,
+        closeText: "X",
+        width: $(window).width()*0.95,
+        open: ()=>{
+            $('body').addClass('scrolloff')
+            $('.ui-widget-overlay').bind('click',function(){
+                $('#dialog').dialog('close');
+            })
+        },
+        close: ()=>{
+            $('body').removeClass('scrolloff')
+        }
+    });
+
+
+    $( ".icons" ).on( "click", function() {
+        $( "#dialog" ).dialog( "open" );
+      });
+
     $('.fav-icon').fadeTo(0, 0)
 
 
@@ -75,7 +96,7 @@ let pageInteractions = () => {
 
     $('#fav-toggle').on('click', () => {
         $('#fav').toggle()
-        $('main').toggleClass('scrolloff')
+        $('body').toggleClass('scrolloff')
         $('nav').toggleClass('is--fav')
     })
 

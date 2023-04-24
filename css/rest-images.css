@@ -1,5 +1,5 @@
 .scrolloff {
-    overflow: none;
+    overflow: hidden;
 }
 
 body{
@@ -189,4 +189,58 @@ nav.is--fav{
 
     margin-bottom: 2rem;
 
+}
+
+
+
+.ui-dialog {
+    background-color: bisque;
+    z-index: 2;
+
+    padding: 1rem;
+
+    box-sizing: border-box;
+}
+
+.ui-dialog-titlebar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    margin-bottom: 1rem;
+}
+
+.ui-dialog-title{
+}
+
+.ui-dialog-titlebar-close{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.ui-dialog-content{}
+
+.ui-widget-overlay{
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.7)
+}
+
+.dialog-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.dialog-item-icon{
+    width: 2rem;
+    margin-right: 1rem;
 }
