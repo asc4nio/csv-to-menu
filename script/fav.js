@@ -2,7 +2,6 @@ import { parse } from '../libs/vanillaes-csv/index.js'
 import {createDomItem} from './fav-domitem.js'
 
 let items = []
-let favs = []
 
 let getNParseData = async () => {
     let url = "./menu/restaurant.csv";
@@ -23,7 +22,8 @@ let getNParseData = async () => {
             category: iCateg,
             isGlutenfree: iGluten,
             isFreezed: iFreeze,
-            isVegetarian: iVeg
+            isVegetarian: iVeg,
+            isFav: false
         }
 
         items.push(item)
@@ -34,13 +34,7 @@ let placeData = async () => {
     await getNParseData()
 
     await items.map((item, index) => {
-        // buildItem(item, index)
-
         createDomItem(item, index)
-
-        // let $domItem = new domItem(item, index)
-        // $domItem.createItem()
-        // $domItem.appendToMain()
     })
 
 }
@@ -63,7 +57,7 @@ let pageInteractions = () => {
         $(`#item${i}`).on('click', () => {
             let id = `item${i}`
             console.log(id)
-            toggleFav(id)
+            toggleFavItem(id)
         })
 
     }
@@ -95,8 +89,8 @@ buildPage()
 
 
 
-let toggleFav = (id) => {
-    let checkIfAlreadyFav = favs.find(i => { return i.id === id })
+let toggleFavItem = (id) => {
+    let checkIfAlreadyFav = items.find(i => { return i.id === id && i.isFav })
     if (checkIfAlreadyFav) {
         console.log('was in fav')
         removeItemFromFav(id)
@@ -104,21 +98,21 @@ let toggleFav = (id) => {
         addItemToFav(id)
     }
 
-    console.log('favs', favs)
+    console.log('items after toggleFavItem', items)
 
 }
 
 
 let addItemToFav = (id) => {
-    let item = items.find(i => { return i.id === id })
-    favs.push(item)
-    // console.log(favs)
+
+    items.find(i => { return i.id === id }).isFav = true
+
+    console.log('items after adding item', items)
 
     let $domItem = $(`#${id}`)
     $domItem.find('.fav-icon').fadeTo(0, 1)
 
     let $favDiv = $domItem.clone().attr("id", `fav-${id}`);
-
     $favDiv.appendTo('#fav-container')
 
     $domItem.addClass('is--fav')
@@ -132,22 +126,25 @@ let addItemToFav = (id) => {
 }
 
 let removeItemFromFav = (id) => {
-    let fav = favs.find(i => { return i.id === id })
-    let index = favs.indexOf(fav);
-    favs.splice(index, 1);
 
     let $domItem = $(`#${id}`)
-    let $favDiv = $(`fav-${id}`)
+    
 
     $domItem.removeClass('is--fav')
     $domItem.find('.fav-icon').fadeTo(0, 0)
 
+    let $favDiv = $(`#fav-${id}`)
     $favDiv.remove()
+
+    items.find(i => { return i.id === id }).isFav = false
+
+    console.log('items after removing item', items)
+
 }
 
 let clearFavs = () => {
     $('#fav-container').empty()
-    favs = []
+
     $('.item').removeClass('is--fav')
     $(`.fav-icon`).fadeTo(0, 0)
 
@@ -155,5 +152,5 @@ let clearFavs = () => {
 
     $('#fav-toggle').click()
 
-    console.log('cleared', favs)
+    console.log('cleared')
 }

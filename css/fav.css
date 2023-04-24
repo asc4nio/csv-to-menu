@@ -162,7 +162,7 @@ nav.is--fav{
 }
 
 .fav-inner{
-    margin: 2rem;
+    padding: 2rem;
 
     max-width: 540px;
     margin-left: auto;
