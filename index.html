@@ -4,27 +4,105 @@
 <head>
     <!-- <meta name="description" content="Webpage description goes here" /> -->
     <meta charset="utf-8">
-    <title>csv-to-menu</title>
+    <title>rest-images_csv-to-menu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="asc4nio">
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./libs/jquery-3.6.4.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="./libs/jquery-ui-flat-theme-master/jquery-ui.css"> -->
+    <link rel="stylesheet" href="./css/rest-images.css">
 
 </head>
 
 <body>
     <main>
         <header>
-            <h1>
-                Menu
-            </h1>
+            <h1> Restaurant </h1>
+            <p class="subheader">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pretium ac nunc sit amet rhoncus.
+            </p>
         </header>
-        <div></div>
-        <div class="drinks-container">
+        <div id="accordion">
+            <div class="food-title">
+                <h2>Antipasti</h2>
+                <div class="icon-toggle">
+                    <img class="icon-toggle-img" src="./img/restaurant/icon-accordion.svg"/>
+                </div>
+            </div>
+            <div class="food-category">
+                <div id="antipasti" class="items-container"></div>
+            </div>
+            <div class="food-title">
+                <h2>Primi</h2>
+                <div class="icon-toggle">
+                    <img class="icon-toggle-img" src="./img/restaurant/icon-accordion.svg"/>
+                </div>
+            </div>
+            <div class="food-category">
+                <div id="primi" class="items-container"></div>
+            </div>
+            <div class="food-title">
+                <h2>Secondi</h2>
+                <div class="icon-toggle">
+                    <img class="icon-toggle-img" src="./img/restaurant/icon-accordion.svg"/>
+                </div>
+            </div>
+            <div class="food-category">
+                <div id="secondi" class="items-container"></div>
+            </div>
+            <div class="food-title">
+                <h2>Dessert</h2>
+                <div class="icon-toggle">
+                    <img class="icon-toggle-img" src="./img/restaurant/icon-accordion.svg"/>
+                </div>
+            </div>
+            <div class="food-category">
+                <div id="dessert" class="items-container"></div>
+            </div>
         </div>
+        <div id="infosection">
+            <h3>Info box</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pretium ac nunc sit amet rhoncus.</p>
+        </div>
+        <nav>
+            <button id="fav-toggle" class="nav-button">
+                <img class="nav-icon" src="./img/icon-star.svg"/>
+            </button>
+        </nav>
     </main>
+    <div id="fav">
+        <div class="fav-inner">
+            <div class="fav-title">
+                <h1>Preferiti</h1>
+                <p id="no-fav-text" class="subheader">
+                    Clicca su un prodotto per aggiungerlo alla lista dei preferiti.
+                </p>
 
-    <script type="module" src="./script/main.js"></script>
+            </div>
+            <div id="clear-favs">Rimuovi tutto</div>
+            <div id="fav-container">
+
+            </div>
+        </div>
+    </div>
+    <div id="dialog" title="Legenda icone">
+        <div class="dialog-item">
+            <img src="./img/restaurant/icon-freezed.svg" class="dialog-item-icon"/>
+            <p>Contiene alimenti surgelati</p>
+        </div>
+        <div class="dialog-item">
+            <img src="./img/restaurant/icon-glutenfree.svg" class="dialog-item-icon"/>
+            <p>Prodotto senza glutine</p>
+        </div>
+        <div class="dialog-item">
+            <img src="./img/restaurant/icon-vegetarian.svg" class="dialog-item-icon"/>
+            <p>Prodotto vegetariano</p>
+        </div>
+    </div>
+
+    <script src="./libs/jquery-3.6.4.min.js"></script>
+    <script src="./libs/jquery-ui-1.13.2/jquery-ui.js"></script>
+
+    <script type="module" src="./script/rest-images.js"></script>
 </body>
 
 </html>
