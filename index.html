@@ -15,16 +15,23 @@
 <body>
     <main>
         <header>
-            <h1> Restaurant </h1>
+            <div class="header-image">
+                <img class="header-image-img" src="./img/header.jpg" />
+                <div class="header-title">
+                    <h1>Menu</h1>
+                </div>
+            </div>
             <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pretium ac nunc sit amet rhoncus.
+                Una descrizione del tuo locale o della particolarità della tua offerta. <br> Lorem ipsum dolor sit amet
+                consectetur. Elementum laoreet commodo blandit magna sit.
             </p>
         </header>
+
         <div id="accordion">
             <div class="food-title">
                 <h2>Antipasti</h2>
                 <div class="icon-toggle">
-                    <img class="icon-toggle-img" src="./img/dev/restaurant/icon-accordion.svg"/>
+                    <img class="icon-toggle-img" src="./img/dev/restaurant/icon-accordion.svg" />
                 </div>
             </div>
             <div class="food-category">
@@ -33,7 +40,7 @@
             <div class="food-title">
                 <h2>Primi</h2>
                 <div class="icon-toggle">
-                    <img class="icon-toggle-img" src="./img/dev/restaurant/icon-accordion.svg"/>
+                    <img class="icon-toggle-img" src="./img/dev/restaurant/icon-accordion.svg" />
                 </div>
             </div>
             <div class="food-category">
@@ -42,7 +49,7 @@
             <div class="food-title">
                 <h2>Secondi</h2>
                 <div class="icon-toggle">
-                    <img class="icon-toggle-img" src="./img/dev/restaurant/icon-accordion.svg"/>
+                    <img class="icon-toggle-img" src="./img/dev/restaurant/icon-accordion.svg" />
                 </div>
             </div>
             <div class="food-category">
@@ -51,7 +58,7 @@
             <div class="food-title">
                 <h2>Dessert</h2>
                 <div class="icon-toggle">
-                    <img class="icon-toggle-img" src="./img/dev/restaurant/icon-accordion.svg"/>
+                    <img class="icon-toggle-img" src="./img/dev/restaurant/icon-accordion.svg" />
                 </div>
             </div>
             <div class="food-category">
@@ -59,41 +66,64 @@
             </div>
         </div>
         <div id="infosection">
-            <h3>Info box</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pretium ac nunc sit amet rhoncus.</p>
+            <!-- <h3>Info box</h3> -->
+            <p>Informazioni sul servizio. <br> Lorem ipsum dolor sit amet consectetur. Elementum laoreet commodo blandit
+                magna sit.</p>
         </div>
         <nav>
-            <button id="fav-toggle" class="nav-button">
-                <img class="nav-icon" src="./img/dev/icon-star.svg"/>
-            </button>
+            <div class="nav-inner">
+                <button id="lang-toggle" class="nav-button">
+                    <img class="nav-icon" src="./img/icons/icon-navlang.svg">
+                </button>
+                <button id="fav-toggle" class="nav-button">
+                    <img class="nav-icon navfav-off" src="./img/icons/icon-navfav-off.svg" />
+                    <img class="nav-icon navfav-on" src="./img/icons/icon-navfav-on.svg" />
+                </button>
+                <button id="profile-toggle" class="nav-button">
+                    <img class="nav-icon navprofile" src="./img/icons/icon-navprofile.svg">
+                </button>
+            </div>
+
         </nav>
     </main>
+
     <div id="fav">
         <div class="fav-inner">
             <div class="fav-title">
                 <h1>Preferiti</h1>
-                <p id="no-fav-text" class="subheader">
+                <p id="no-fav-text" class="fav-subheader">
                     Clicca su un prodotto per aggiungerlo alla lista dei preferiti.
                 </p>
 
             </div>
-            <div id="clear-favs">Rimuovi tutto</div>
             <div id="fav-container">
-
             </div>
+            <div id="clear-favs">Rimuovi tutto</div>
         </div>
     </div>
+
+    <div id="profile">
+        <div class="profile-inner">
+            <h1>Il nome del tuo ristorante</h1>
+            <p>Rimani in contatto con noi</p>
+            <p>+39 333 1234567</p>
+            <p>info@ristorante.it</p>
+            <a href="#" target="_blank">Facebook</a>
+            <a href="#" target="_blank">Instagram</a>
+        </div>
+    </div>
+
     <div id="dialog" title="Legenda icone">
         <div class="dialog-item">
-            <img src="./img/restaurant/icon-freezed.svg" class="dialog-item-icon"/>
+            <img src="./img/icons/icon-item-freezed.svg" class="dialog-item-icon" />
             <p>Contiene alimenti surgelati</p>
         </div>
         <div class="dialog-item">
-            <img src="./img/restaurant/icon-glutenfree.svg" class="dialog-item-icon"/>
+            <img src="./img/icons/icon-item-glutenfree.svg" class="dialog-item-icon" />
             <p>Prodotto senza glutine</p>
         </div>
         <div class="dialog-item">
-            <img src="./img/restaurant/icon-vegetarian.svg" class="dialog-item-icon"/>
+            <img src="./img/icons/icon-item-vegetarian.svg" class="dialog-item-icon" />
             <p>Prodotto vegetariano</p>
         </div>
     </div>

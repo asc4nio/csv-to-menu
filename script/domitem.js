@@ -1,15 +1,23 @@
 const icons = [
     {
+        name: 'favitem-off',
+        src: "./img/icons/icon-favitem-off.svg"
+    },    
+    {
+        name: 'favitem-on',
+        src: "./img/icons/icon-favitem-on.svg"
+    },
+    {
         name: 'glutenfree',
-        src: "./img/dev/restaurant/icon-glutenfree.svg"
+        src: "./img/icons/icon-item-glutenfree.svg"
     },
     {
         name: 'freezed',
-        src: "./img/dev/restaurant/icon-freezed.svg"
+        src: "./img/icons/icon-item-freezed.svg"
     },
     {
         name: 'vegetarian',
-        src: "./img/dev/restaurant/icon-vegetarian.svg"
+        src: "./img/icons/icon-item-vegetarian.svg"
     }
     ,
     {
@@ -26,7 +34,7 @@ export function createDomItem(item, index){
         "id": `item${index}`
     });
 
-    let $divImage = $("<div>", { "class": "item-image" }).appendTo($divItem)
+    let $divImage = $("<div>", { "class": "item-image pointeroff" }).appendTo($divItem)
     $("<img />", {
         src: `./img/dev/rest-images/${item.imageName}`,
         // alt: icons.find(i => { return i.name === 'fav' }).name,
@@ -38,9 +46,14 @@ export function createDomItem(item, index){
     $("<h3>", { "class": "title" }).html(item.name).appendTo($divItemHead)
 
     $("<img />", {
-        src: icons.find(i => { return i.name === 'fav' }).src,
-        alt: icons.find(i => { return i.name === 'fav' }).name,
-        class: 'fav-icon'
+        src: icons.find(i => { return i.name === 'favitem-off' }).src,
+        alt: icons.find(i => { return i.name === 'favitem-off' }).name,
+        class: 'fav-icon fav-icon-off'
+    }).appendTo($divItemHead)
+    $("<img />", {
+        src: icons.find(i => { return i.name === 'favitem-on' }).src,
+        alt: icons.find(i => { return i.name === 'favitem-on' }).name,
+        class: 'fav-icon fav-icon-on'
     }).appendTo($divItemHead)
 
     $("<div>", { "class": "ingr" }).html(item.ingredients).appendTo($divItem)
@@ -51,7 +64,7 @@ export function createDomItem(item, index){
     
     let $divIcons= $('<a>',{
         href: '#',
-        class: 'icons',
+        class: 'item-icons',
         click: (e)=>{
             e.preventDefault()
             e.stopPropagation()
@@ -59,25 +72,26 @@ export function createDomItem(item, index){
     }).appendTo($divFoot);
 
 
-
-
     // icons
     if (item.isGlutenfree === "TRUE") {
         $("<img />", {
             src: icons.find(i => { return i.name === 'glutenfree' }).src,
-            alt: icons.find(i => { return i.name === 'glutenfree' }).name
+            alt: icons.find(i => { return i.name === 'glutenfree' }).name,
+            class: 'item-ingr-icon'
         }).appendTo($divIcons)
     }
     if (item.isFreezed === "TRUE") {
         $("<img />", {
             src: icons.find(i => { return i.name === 'freezed' }).src,
-            alt: icons.find(i => { return i.name === 'freezed' }).name
+            alt: icons.find(i => { return i.name === 'freezed' }).name,
+            class: 'item-ingr-icon'
         }).appendTo($divIcons)
     }
     if (item.isVegetarian === "TRUE") {
         $("<img />", {
             src: icons.find(i => { return i.name === 'vegetarian' }).src,
-            alt: icons.find(i => { return i.name === 'vegetarian' }).name
+            alt: icons.find(i => { return i.name === 'vegetarian' }).name,
+            class: 'item-ingr-icon'
         }).appendTo($divIcons)
     }
 

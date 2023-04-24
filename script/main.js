@@ -53,6 +53,7 @@ let pageInteractions = () => {
     $( "#dialog" ).dialog({
         autoOpen: false,
         modal: true,
+        draggable: false,
         closeText: "X",
         width: $(window).width()*0.95,
         open: ()=>{
@@ -67,11 +68,11 @@ let pageInteractions = () => {
     });
 
 
-    $( ".icons" ).on( "click", function() {
+    $( ".item-icons" ).on( "click", function() {
         $( "#dialog" ).dialog( "open" );
-      });
+    });
 
-    $('.fav-icon').fadeTo(0, 0)
+    // $('.fav-icon').fadeTo(0, 0)
 
 
     let itemsQuant = $(".item").length
@@ -91,7 +92,28 @@ let pageInteractions = () => {
     $('#fav-toggle').on('click', () => {
         $('#fav').toggle()
         $('body').toggleClass('scrolloff')
-        $('nav').toggleClass('is--fav')
+        // $('nav').toggleClass('is--fav')
+        $('.nav-icon.navfav-on').toggleClass('is--active')
+        $('.nav-icon.navfav-off').toggleClass('is--active')
+
+        // if($('#profile').is(":visible")){
+        //     $('#profile').hide()
+        //     $('.nav-icon.navprofile').removeClass('is--active')
+        // }
+        
+        updateNav()
+    })
+
+    $('#profile-toggle').on('click', () => {
+        $('#profile').toggle()
+        $('body').toggleClass('scrolloff')
+        $('.nav-icon.navprofile').toggleClass('is--active')
+
+        // if($('#fav').is(":visible")){
+        //     $('#fav').hide()
+        //     $('.nav-icon.navfav-on').removeClass('is--active')
+        //     $('.nav-icon.navfav-off').removeClass('is--active')
+        // }
     })
 
     $('#clear-favs').on('click', clearFavs)
@@ -132,7 +154,8 @@ let addItemToFav = (id) => {
 
 
     let $domItem = $(`#${id}`)
-    $domItem.find('.fav-icon').fadeTo(0, 1)
+    $domItem.find('.fav-icon-on').show()
+    $domItem.find('.fav-icon-off').hide()
 
     let $favDiv = $domItem.clone().attr("id", `fav-${id}`);
     $favDiv.find('.item-image').remove()
@@ -144,6 +167,7 @@ let addItemToFav = (id) => {
 
     // console.log('items after adding item', items)
 
+    updateNav()
 
     $favDiv.find('.fav-icon').on('click', () => {
         $favDiv.remove()
@@ -157,7 +181,9 @@ let removeItemFromFav = (id) => {
     
 
     $domItem.removeClass('is--fav')
-    $domItem.find('.fav-icon').fadeTo(0, 0)
+    // $domItem.find('.fav-icon').fadeTo(0, 0)
+    $domItem.find('.fav-icon-on').hide()
+    $domItem.find('.fav-icon-off').show()
 
     let $favDiv = $(`#fav-${id}`)
     $favDiv.remove()
@@ -166,17 +192,35 @@ let removeItemFromFav = (id) => {
 
     // console.log('items after removing item', items)
 
+    updateNav()
+
 }
 
 let clearFavs = () => {
     $('#fav-container').empty()
 
     $('.item').removeClass('is--fav')
-    $(`.fav-icon`).fadeTo(0, 0)
+    // $(`.fav-icon`).fadeTo(0, 0)
 
     $('#clear-favs').hide()
 
     $('#fav-toggle').click()
 
+    updateNav()
+
     // console.log('cleared')
+}
+
+let updateNav = ()=>{
+    if ( $('#fav-container').children().length > 0 ) {
+        $('.navfav-on').show()
+        $('.navfav-off').hide()
+    } else {
+        $('.navfav-on').hide()
+        $('.navfav-off').show()
+        $('.fav-icon-on').hide()
+        $('.fav-icon-off').show()
+
+        $('#clear-favs').hide()
+    }
 }
