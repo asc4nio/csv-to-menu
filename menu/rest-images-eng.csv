@@ -1,0 +1,12 @@
+Nome del piatto,Ingredienti,Costo,Categoria,Glutenfree,Surgelato,Vegetariano,ImageName
+House Charcuterie Board,"Km 0 cured meats and cheeses, homemade taralli, organic honey.",12,Antipasti,FALSE,FALSE,FALSE,tagliere-casa.jpg
+Spicy Peanut Meatballs,"Fried zucchini meatballs with curry, paprika, and breadcrumb coating with toasted peanuts.",6,Antipasti,FALSE,FALSE,TRUE,polpettine-speziate.jpg
+Bresaola and Burrata Rolls,"Valtellina IGP beef bresaola, stuffed with Andria IGP burrata and chives.",8,Antipasti,TRUE,FALSE,FALSE,involtini-bresaola.jpg
+Seafood Spaghetti,"Gragnano IGP pasta with mussels, clams, shrimp, and squid.",14,Primi,FALSE,TRUE,FALSE,spaghetto-scoglio.jpg
+Vegetarian Lasagnetta with Almond Crumble,"Water and flour pasta sheet, vegetarian eggplant and San Marzano DOP tomato sauce, basil, and almond crumble.",9,Primi,FALSE,FALSE,TRUE,lasagnetta-veg.jpg
+Fettuccine with Venison Ragu,Homemade egg pasta with venison ragu and Piave DOP cheese.,"12,5",Primi,FALSE,FALSE,FALSE,fettuccine-ragu.jpg
+Mixed Meat Grill,"Km 0 meats (chicken, beef, lamb) grilled on a spit. Served with seasonal organic vegetables and homemade sauces.",20,Secondi,TRUE,FALSE,FALSE,grigliata-mista-carne.jpg
+Mixed Seafood Grill,"Daily caught fish, mollusks, and crustaceans grilled.",22,Secondi,TRUE,TRUE,FALSE,grigliata-mista-mare.jpg
+Stuffed Portobello Mushroom,Portobello mushroom grilled and stuffed with seasonal vegetables and homemade pesto. Served with mustard sauce.,10,Secondi,TRUE,FALSE,TRUE,fungo-portobello.jpg
+Tiramisù in a Glass,"Homemade coffee Savoiardi, mascarpone cream, dusted with bitter cocoa and cinnamon powder.",7,Dessert,FALSE,FALSE,FALSE,tiramisu-bicchiere.jpg
+Coconut Semifreddo,"Coconut mousse, passion fruit compote, and mint leaves.",7,Dessert,TRUE,FALSE,FALSE,semifreddo-cocco.jpg
