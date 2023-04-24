@@ -1,5 +1,5 @@
 import { parse } from '../libs/vanillaes-csv/index.js'
-import {createDomItem} from './rest-images-domitem.js'
+import {createDomItem} from './domitem.js'
 
 let items = []
 
