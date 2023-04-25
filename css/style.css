@@ -89,6 +89,10 @@ main {
     padding-bottom: 4rem;
 }
 
+main.is--samsung{
+    padding-bottom: 6rem;
+}
+
 /* header{} */
 
 .header-image{
@@ -312,6 +316,10 @@ nav{
     filter: drop-shadow(0rem 0rem 1rem rgba(40,35,31,0.2) );
 }
 
+nav.is--samsung{
+    bottom: 3rem;
+}
+
 .nav-inner{
     width: 100%;
 
@@ -415,6 +423,10 @@ nav{
 
     background-color: var(--col-mid)
 
+}
+
+.overlay.is--samsung{
+    padding-bottom: 8rem;
 }
 
 .overlay-inner{
