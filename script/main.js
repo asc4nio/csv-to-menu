@@ -331,7 +331,6 @@ let updateNav = () => {
     }
 }
 
-
 /***************************************************************** */
 
 const buildPage = (async () => {
@@ -339,16 +338,19 @@ const buildPage = (async () => {
     pageInteractions.initPage()
 })()
 
-$(window).on("resize", function () {
-    pageWidth = $(window).width()
-    pageInteractions.initDialog()
-});
-
-
 $(window).on("load", function () {
     setTimeout(() => {
         $('#loading').hide() 
     }, 200);
+});
+
+
+/***************************************************************** */
+
+
+$(window).on("resize", function () {
+    pageWidth = $(window).width()
+    pageInteractions.initDialog()
 });
 
 
@@ -358,7 +360,6 @@ if(navigator.userAgent.match(/SAMSUNG|Samsung|SGH-[I|N|T]|GT-[I|N]|SM-[A|N|P|T|Z
     $('main').addClass('is--samsung')
     $('.overlay').addClass('is--samsung')
 }
-
 
 window.onpopstate = function() {
     if (profile.isOpen) {
