@@ -154,8 +154,8 @@ export function createDrinkItem(item, index) {
 
     $("<h3>", { "class": "cost" }).html(item.cost).appendTo($divFoot)
 
-    
-    if(item.altSize !== ''){
+
+    if (item.altSize !== '') {
         let $divAltsize = $("<div>", { "class": "item-altsize" }).appendTo($divItem)
         $("<div>", { "class": "item-altdescr" }).html(item.altSize).appendTo($divAltsize)
         $("<div>", { "class": "item-alcost" }).html(item.altCost).appendTo($divAltsize)
@@ -173,7 +173,10 @@ export function createDrinkItem(item, index) {
         case 'Birra':
             $divItem.appendTo("#birre");
             break;
-        case 'Analcolici' || 'Bar':
+        case 'Analcolici':
+            $divItem.appendTo("#analcolici");
+            break;
+        case 'Bar':
             $divItem.appendTo("#analcolici");
             break;
         default:

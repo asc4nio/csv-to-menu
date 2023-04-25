@@ -1,0 +1,15 @@
+Nome bevanda,Descrizione,Formato,Costo,Formato alternativo,Costo formato alternativo,Categoria
+"Barolo docg Cascina Chicco",Grape variety: 100% Nebbiolo,750ml,10,,,Vino rosso
+Amarone Valpolicella docg Azienda Santi,"Grape variety: 70% Corvina, 20% Rondinella, 5% Oseleta, 5% Croatina",750ml,10,Glass,3,Vino rosso
+Montepulciano d’Abruzzo Barone di Valforte,Grape variety: 100% Montepulciano d’Abruzzo,750ml,5,,,Vino rosso
+Gewurztraminer di Novacella,Grape variety: 100% Gewurztraminer,750ml,10,,,Vino bianco
+"Chardonnay Falesia 13%vol Az.d’Amico",Grape variety: 100% Chardonnay,750ml,21,Glass,8,Vino bianco
+"Capolemole Igt Bio Marco Carpineti",Grape variety: 100% Bellone,750ml,22,,,Vino bianco
+Itala Pilsen on tap,"4.8% vol Blonde Pils, rich and distinctive taste",200ml,"3,5",,,Birra
+Grolsch,"Wheat beer, pale yellow, refreshing and fruity taste",200ml,"3,5",,,Birra
+Acqua Naturale,Mangiatorella,1l,2,"0,5l",1,Analcolici
+Acqua Effervescente,Ferrarelle,1l,2,"0,5l",1,Analcolici
+Coca Cola,in can,330ml,2,,,Analcolici
+Coca Cola,on tap,400ml,3,200ml,2,Analcolici
+Espresso,,,1,,,Bar
+Cappuccino,,,"1,5",,,Bar
