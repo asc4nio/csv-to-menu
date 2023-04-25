@@ -273,6 +273,7 @@ window.favs = {
             $('.nav-icon.navfav-off').removeClass('is--active')
             $('#fav-toggle').removeClass('is--active')
         } else {
+            history.pushState({}, '');
             $('#fav').show()
             $('body').addClass('scrolloff')
             $('.nav-icon.navfav-on').addClass('is--active')
@@ -302,6 +303,7 @@ window.profile = {
             $('.nav-icon.navprofile').removeClass('is--active')
             $('#profile-toggle').removeClass('is--active')
         } else {
+            history.pushState({}, '');
             $('#profile').show()
             $('body').addClass('scrolloff')
             $('.nav-icon.navprofile').addClass('is--active')
@@ -329,7 +331,6 @@ let updateNav = () => {
     }
 }
 
-
 /***************************************************************** */
 
 const buildPage = (async () => {
@@ -337,14 +338,19 @@ const buildPage = (async () => {
     pageInteractions.initPage()
 })()
 
-$(window).on("resize", function () {
-    pageWidth = $(window).width()
-    pageInteractions.initDialog()
+$(window).on("load", function () {
+    setTimeout(() => {
+        $('#loading').hide() 
+    }, 200);
 });
 
 
-$(window).on("load", function () {
-    $('#loading').hide()
+/***************************************************************** */
+
+
+$(window).on("resize", function () {
+    pageWidth = $(window).width()
+    pageInteractions.initDialog()
 });
 
 
@@ -353,7 +359,13 @@ if(navigator.userAgent.match(/SAMSUNG|Samsung|SGH-[I|N|T]|GT-[I|N]|SM-[A|N|P|T|Z
     $('nav').addClass('is--samsung')
     $('main').addClass('is--samsung')
     $('.overlay').addClass('is--samsung')
-
-} else {
-    console.log("it's not a Samsung");
 }
+
+window.onpopstate = function() {
+    if (profile.isOpen) {
+        profile.toggleView()
+    }
+    if (favs.isOpen) {
+        favs.toggleView()
+    }
+};

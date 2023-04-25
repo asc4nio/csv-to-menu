@@ -90,7 +90,7 @@ main {
 }
 
 main.is--samsung{
-    padding-bottom: 6rem;
+    padding-bottom: 2rem;
 }
 
 /* header{} */
@@ -317,7 +317,8 @@ nav{
 }
 
 nav.is--samsung{
-    bottom: 3rem;
+    bottom: auto;
+    top: 0.5rem;
 }
 
 .nav-inner{
@@ -426,7 +427,8 @@ nav.is--samsung{
 }
 
 .overlay.is--samsung{
-    padding-bottom: 8rem;
+    padding-bottom: 2rem;
+    padding-top: 6rem;
 }
 
 .overlay-inner{
