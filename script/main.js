@@ -346,3 +346,14 @@ $(window).on("resize", function () {
 $(window).on("load", function () {
     $('#loading').hide()
 });
+
+
+if(navigator.userAgent.match(/SAMSUNG|Samsung|SGH-[I|N|T]|GT-[I|N]|SM-[A|N|P|T|Z]|SHV-E|SCH-[I|J|R|S]|SPH-L/i)) {
+    console.log("it's Samsung");
+    $('nav').addClass('is--samsung')
+    $('main').addClass('is--samsung')
+    $('.overlay').addClass('is--samsung')
+
+} else {
+    console.log("it's not a Samsung");
+}
