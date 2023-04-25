@@ -1,10 +1,11 @@
 import { parse } from '../libs/vanillaes-csv/index.js'
-import { createDomItem } from './domitem.js'
+import { createFoodItem, createDrinkItem } from './domitem.js'
 
 let items = []
+let drinks = []
 
 let getNParseData = async () => {
-    let url = "./menu/rest-images.csv";
+    let url = "./menu/food-images-ita.csv";
     let response = await fetch(url);
     let data = await response.text();
     let parsedData = await parse(data)
@@ -12,7 +13,7 @@ let getNParseData = async () => {
     // console.log(parsedData)
 
     for (let i = 1; i < parsedData.length; i++) {
-        let [iName, iIngr, iCost, iCateg, iGluten, iFreeze, iVeg, iImage] = parsedData[i]
+        let [iName, iIngr, iCost, iCateg, iGluten, iFreeze, iVeg, iMilk, iImage] = parsedData[i]
 
         let item = {
             id: `item${i - 1}`,
@@ -23,20 +24,53 @@ let getNParseData = async () => {
             isGlutenfree: iGluten,
             isFreezed: iFreeze,
             isVegetarian: iVeg,
+            isMilkfree: iMilk,
             imageName: iImage,
+
             isFav: false
         }
 
         items.push(item)
     }
 }
+let getNParseDrinks = async () => {
+    let url = "./menu/drinks-ita.csv";
+    let response = await fetch(url);
+    let data = await response.text();
+    let parsedData = await parse(data)
+
+    // console.log(parsedData)
+
+    for (let i = 1; i < parsedData.length; i++) {
+        let [iName, iDescr, iSize, iCost, iAltSize, iAltCost, iCateg] = parsedData[i]
+
+        let item = {
+            id: `drink${i - 1}`,
+            name: iName,
+            description: iDescr,
+            size: iSize,
+            cost: iCost,
+            altSize: iAltSize,
+            altCost: iAltCost,
+            category: iCateg,
+
+            isFav: false
+        }
+
+        drinks.push(item)
+    }
+}
 let placeData = async () => {
     await getNParseData()
+    await getNParseDrinks()
 
     await items.map((item, index) => {
-        createDomItem(item, index)
+        createFoodItem(item, index)
     })
 
+    await drinks.map((item, index) => {
+        createDrinkItem(item, index)
+    })
 }
 
 /***************************************************************** */
@@ -69,7 +103,7 @@ window.pageInteractions = {
             heightStyle: "content",
             active: false,
             collapsible: true,
-            header: ".food-title"
+            header: ".accordion-title"
         });
     },
     initPage: () => {
@@ -81,11 +115,19 @@ window.pageInteractions = {
         });
 
 
-        let itemsQuant = $(".item").length
+        let itemsQuant = items.length
         for (let i = 0; i < itemsQuant; i++) {
             $(`#item${i}`).on('click', () => {
                 let id = `item${i}`
                 favs.toggleFavItem(id)
+            })
+        }
+
+        let drinksQuant = drinks.length
+        for (let i = 0; i < drinksQuant; i++) {
+            $(`#drink${i}`).on('click', () => {
+                let id = `drink${i}`
+                favs.toggleDrinkItem(id)
             })
         }
 
@@ -125,14 +167,13 @@ window.favs = {
 
         items.find(i => { return i.id === id }).isFav = true
 
-
         let $domItem = $(`#${id}`)
         $domItem.find('.fav-icon-on').show()
         $domItem.find('.fav-icon-off').hide()
 
         let $favDiv = $domItem.clone().attr("id", `fav-${id}`).addClass('is--favlist')
         $favDiv.find('.item-image').remove()
-        $favDiv.appendTo('#fav-container')
+        $favDiv.prependTo('#fav-container')
 
         $domItem.addClass('is--fav')
 
@@ -158,6 +199,52 @@ window.favs = {
         $favDiv.remove()
 
         items.find(i => { return i.id === id }).isFav = false
+
+        updateNav()
+
+    },
+    toggleDrinkItem: (id) => {
+        let checkIfAlreadyFav = drinks.find(i => { return i.id === id && i.isFav })
+        if (checkIfAlreadyFav) {
+            favs.removeDrinkFromFav(id)
+        } else {
+            favs.addDrinkToFav(id)
+        }
+    },
+    addDrinkToFav: (id) => {
+
+        drinks.find(i => { return i.id === id }).isFav = true
+
+        let $domItem = $(`#${id}`)
+        $domItem.find('.fav-icon-on').show()
+        $domItem.find('.fav-icon-off').hide()
+
+        let $favDiv = $domItem.clone().attr("id", `fav-${id}`).addClass('is--favlist')
+        $favDiv.appendTo('#fav-container')
+
+        $domItem.addClass('is--fav')
+
+        $('#clear-favs').show()
+
+        updateNav()
+
+        $favDiv.find('.fav-icon').on('click', () => {
+            $favDiv.remove()
+            favs.removeDrinkFromFav(id)
+        })
+    },
+    removeDrinkFromFav: (id) => {
+
+        let $domItem = $(`#${id}`)
+
+        $domItem.removeClass('is--fav')
+        $domItem.find('.fav-icon-on').hide()
+        $domItem.find('.fav-icon-off').show()
+
+        let $favDiv = $(`#drink-${id}`)
+        $favDiv.remove()
+
+        drinks.find(i => { return i.id === id }).isFav = false
 
         updateNav()
 

@@ -2,7 +2,7 @@ const icons = [
     {
         name: 'favitem-off',
         src: "./img/icons/icon-favitem-off.svg"
-    },    
+    },
     {
         name: 'favitem-on',
         src: "./img/icons/icon-favitem-on.svg"
@@ -18,8 +18,11 @@ const icons = [
     {
         name: 'vegetarian',
         src: "./img/icons/icon-item-vegetarian.svg"
-    }
-    ,
+    },
+    {
+        name: 'milkfree',
+        src: "./img/icons/icon-item-milkfree.svg"
+    },
     {
         name: 'fav',
         src: "./img/dev/icon-star.svg"
@@ -27,7 +30,7 @@ const icons = [
 ]
 
 
-export function createDomItem(item, index){
+export function createFoodItem(item, index) {
 
     let $divItem = $("<div>", {
         "class": "item",
@@ -61,11 +64,11 @@ export function createDomItem(item, index){
     let $divFoot = $("<div>", { "class": "item-foot" }).appendTo($divItem)
 
     $("<h3>", { "class": "cost" }).html(item.cost).appendTo($divFoot)
-    
-    let $divIcons= $('<a>',{
+
+    let $divIcons = $('<a>', {
         href: '#',
         class: 'item-icons',
-        click: (e)=>{
+        click: (e) => {
             e.preventDefault()
             e.stopPropagation()
         }
@@ -94,6 +97,13 @@ export function createDomItem(item, index){
             class: 'item-ingr-icon'
         }).appendTo($divIcons)
     }
+    if (item.isMilkfree === "TRUE") {
+        $("<img />", {
+            src: icons.find(i => { return i.name === 'milkfree' }).src,
+            alt: icons.find(i => { return i.name === 'milkfree' }).name,
+            class: 'item-ingr-icon'
+        }).appendTo($divIcons)
+    }
 
 
     // append to category
@@ -109,6 +119,62 @@ export function createDomItem(item, index){
             break;
         case 'Dessert':
             $divItem.appendTo("#dessert");
+            break;
+        default:
+            break;
+    }
+}
+
+
+export function createDrinkItem(item, index) {
+    // console.log(item)
+    let $divItem = $("<div>", {
+        "class": "item",
+        "id": `drink${index}`
+    });
+
+    let $divItemHead = $("<div>", { "class": "item-head" }).appendTo($divItem)
+    $("<h3>", { "class": "title" }).html(item.name).appendTo($divItemHead)
+
+    $("<img />", {
+        src: icons.find(i => { return i.name === 'favitem-off' }).src,
+        alt: icons.find(i => { return i.name === 'favitem-off' }).name,
+        class: 'fav-icon fav-icon-off'
+    }).appendTo($divItemHead)
+    $("<img />", {
+        src: icons.find(i => { return i.name === 'favitem-on' }).src,
+        alt: icons.find(i => { return i.name === 'favitem-on' }).name,
+        class: 'fav-icon fav-icon-on'
+    }).appendTo($divItemHead)
+
+    if (item.description !== '') {
+        $("<div>", { "class": "drink-descr" }).html(item.description + '<br>' + item.size).appendTo($divItem)
+    }
+    let $divFoot = $("<div>", { "class": "item-foot" }).appendTo($divItem)
+
+    $("<h3>", { "class": "cost" }).html(item.cost).appendTo($divFoot)
+
+    
+    if(item.altSize !== ''){
+        let $divAltsize = $("<div>", { "class": "item-altsize" }).appendTo($divItem)
+        $("<div>", { "class": "item-altdescr" }).html(item.altSize).appendTo($divAltsize)
+        $("<div>", { "class": "item-alcost" }).html(item.altCost).appendTo($divAltsize)
+    }
+
+
+    // append to category
+    switch (item.category) {
+        case 'Vino rosso':
+            $divItem.appendTo("#vini-rossi");
+            break;
+        case 'Vino bianco':
+            $divItem.appendTo("#vini-bianchi");
+            break;
+        case 'Birra':
+            $divItem.appendTo("#birre");
+            break;
+        case 'Analcolici' || 'Bar':
+            $divItem.appendTo("#analcolici");
             break;
         default:
             break;

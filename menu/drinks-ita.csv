@@ -1,0 +1,15 @@
+Nome bevanda,Descrizione,Formato,Costo,Formato alternativo,Costo formato alternativo,Categoria
+"Barolo docg Cascina Chicco",Uve: 100% Nebbiolo,750ml,10,,,Vino rosso
+Amarone Valpolicella docg Azienda Santi,"Uve: 70% Corvina, 20% Rondinella, 5% Oseleta, 5% Croatina",750ml,10,Calice,3,Vino rosso
+Montepulciano d’Abruzzo Barone di Valforte,Uve: 100% Montepulciano d’Abruzzo,750ml,5,,,Vino rosso
+Gewurztraminer di Novacella,Uve: 100% Gewurztraminer,750ml,10,,,Vino bianco
+"Chardonnay Falesia 13%vol Az.d’Amico",Uve: 100% Chardonnay,750ml,21,Calice,8,Vino bianco
+"Capolemole Igt Bio Marco Carpineti",Uve: 100% Bellone,750ml,22,,,Vino bianco
+Itala Pilsen alla spina,"4,8 % Vol. Pils, biondo dorato, gusto ricco e distintivo",200ml,"3,5",,,Birra
+Grolsch,"5,1 % Vol. Weizern, giallo paglierino, gusto rinfrescante e fruttato",200ml,"3,5",,,Birra
+Acqua Naturale,Mangiatorella,1l,2,"0,5l",1,Analcolici
+Acqua Effervescente,Ferrarelle,1l,2,"0,5l",1,Analcolici
+Coca Cola,in lattina,330ml,2,,,Analcolici
+Coca Cola,alla spina,400ml,3,200ml,2,Analcolici
+Espresso,,,1,,,Bar
+Cappuccino,,,"1,5",,,Bar

@@ -168,6 +168,12 @@ main {
     /* margin-bottom: 1rem; */
 }
 
+.subcategory-head {
+    padding: 1rem;
+    padding-top: 0;
+    /* padding-left: 2rem; */
+}
+
 /* .ui-accordion-content-active{} */
 
 .item {
@@ -205,6 +211,7 @@ main {
     justify-content: space-between;
 
     padding: 1rem;
+    padding-bottom: 0.5rem;
 
     /* margin-top: 1rem; */
 }
@@ -225,6 +232,10 @@ main {
     padding: 0rem 1rem;
 }
 
+.drink-descr{
+    padding: 0rem 1rem; 
+}
+
 .item-foot {
     display: flex;
     flex-direction: row;
@@ -243,6 +254,34 @@ main {
 /* .cost{} */
 
 .cost::before{
+    content: '€ ';
+}
+
+.item-altsize {
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+
+    border-color: var(--col-mid);
+    border-style: solid;
+    border-width: 0.1rem;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.item-altdescr {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.item-alcost {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    font-family: 'Volkhov';
+    font-style: normal;
+    font-weight: 400;
+}
+.item-alcost::before{
     content: '€ ';
 }
 
