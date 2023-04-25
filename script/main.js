@@ -273,6 +273,7 @@ window.favs = {
             $('.nav-icon.navfav-off').removeClass('is--active')
             $('#fav-toggle').removeClass('is--active')
         } else {
+            history.pushState({}, '');
             $('#fav').show()
             $('body').addClass('scrolloff')
             $('.nav-icon.navfav-on').addClass('is--active')
@@ -302,6 +303,7 @@ window.profile = {
             $('.nav-icon.navprofile').removeClass('is--active')
             $('#profile-toggle').removeClass('is--active')
         } else {
+            history.pushState({}, '');
             $('#profile').show()
             $('body').addClass('scrolloff')
             $('.nav-icon.navprofile').addClass('is--active')
@@ -344,7 +346,9 @@ $(window).on("resize", function () {
 
 
 $(window).on("load", function () {
-    $('#loading').hide()
+    setTimeout(() => {
+        $('#loading').hide() 
+    }, 200);
 });
 
 
@@ -353,7 +357,14 @@ if(navigator.userAgent.match(/SAMSUNG|Samsung|SGH-[I|N|T]|GT-[I|N]|SM-[A|N|P|T|Z
     $('nav').addClass('is--samsung')
     $('main').addClass('is--samsung')
     $('.overlay').addClass('is--samsung')
-
-} else {
-    console.log("it's not a Samsung");
 }
+
+
+window.onpopstate = function() {
+    if (profile.isOpen) {
+        profile.toggleView()
+    }
+    if (favs.isOpen) {
+        favs.toggleView()
+    }
+};
