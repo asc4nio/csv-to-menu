@@ -130,7 +130,7 @@ window.favs = {
         $domItem.find('.fav-icon-on').show()
         $domItem.find('.fav-icon-off').hide()
 
-        let $favDiv = $domItem.clone().attr("id", `fav-${id}`);
+        let $favDiv = $domItem.clone().attr("id", `fav-${id}`).addClass('is--favlist')
         $favDiv.find('.item-image').remove()
         $favDiv.appendTo('#fav-container')
 
@@ -184,11 +184,13 @@ window.favs = {
             $('body').removeClass('scrolloff')
             $('.nav-icon.navfav-on').removeClass('is--active')
             $('.nav-icon.navfav-off').removeClass('is--active')
+            $('#fav-toggle').removeClass('is--active')
         } else {
             $('#fav').show()
             $('body').addClass('scrolloff')
             $('.nav-icon.navfav-on').addClass('is--active')
             $('.nav-icon.navfav-off').addClass('is--active')
+            $('#fav-toggle').addClass('is--active')
         }
 
         favs.isOpen = !favs.isOpen
@@ -211,10 +213,12 @@ window.profile = {
             $('#profile').hide()
             $('body').removeClass('scrolloff')
             $('.nav-icon.navprofile').removeClass('is--active')
+            $('#profile-toggle').removeClass('is--active')
         } else {
             $('#profile').show()
             $('body').addClass('scrolloff')
             $('.nav-icon.navprofile').addClass('is--active')
+            $('#profile-toggle').addClass('is--active')
         }
 
         profile.isOpen = !profile.isOpen
@@ -226,11 +230,13 @@ let updateNav = () => {
     if ($('#fav-container').children().length > 0) {
         $('.navfav-on').show()
         $('.navfav-off').hide()
+        $('#no-fav-text').hide()
     } else {
         $('.navfav-on').hide()
         $('.navfav-off').show()
         $('.fav-icon-on').hide()
         $('.fav-icon-off').show()
+        $('#no-fav-text').show()
 
         $('#clear-favs').hide()
     }

@@ -1,22 +1,8 @@
-#loading {
-    position: fixed;
-    left: 0%;
-    top: 0%;
-    right: 0%;
-    bottom: 0%;
-    z-index: 999;
-    background-color:#FFFFFF;
-  }
-
-
-/***********************************************************************/
-
-
-
 :root {
     --col-dark: #28231F;
     --col-mid: #DCC59C;
     --col-light: #FDECD8;
+    --col-highlight: #FFFFFF;
   }
 
 /* mate-regular - latin */
@@ -49,6 +35,15 @@
 
 /***********************************************************************/
 
+#loading {
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    z-index: 999;
+    background-color: var(--col-highlight);
+}
 
 .scrolloff {
     overflow: hidden;
@@ -70,7 +65,7 @@ a {
 }
 
 .p-big {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 body{
@@ -119,7 +114,6 @@ main {
 }
 
 .subheader{
-    font-size: 1.25rem;
     padding: 1rem 2rem;
 }
 
@@ -179,7 +173,7 @@ main {
 .item {
     background-color: var(--col-light);
     border-radius: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 
     filter: drop-shadow(0rem 1rem 1rem rgba(40,35,31,0.2) );
 
@@ -189,9 +183,15 @@ main {
 }
 
 .item.is--fav {
-    background-color: white;
+    background-color: var(--col-highlight);
     scale: 0.95;
 }
+
+.item.is--favlist {
+    margin-bottom: 1rem;
+}
+
+
 /* .item-image{} */
 
 .item-image-img{
@@ -259,14 +259,14 @@ nav{
     z-index: 2;
     top: auto;
     left: 0.5rem;
-    bottom: 0.5rem;
+    bottom: 1rem;
     right: 0.5rem;
 
     display: flex;
     flex-direction: row;
     align-items: center;
 
-    background-color: white;
+    background-color: var(--col-highlight);
 
     border-radius: 1rem;
     
@@ -287,6 +287,23 @@ nav{
 
     padding-left: 3rem;
     padding-right: 3rem;
+}
+
+.nav-button{
+    position: relative;
+}
+
+.nav-button.is--active::after{
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 0.25rem;
+
+    background-color: #28231F;
+    border-radius: 1rem;
 }
 
 .nav-icon{
@@ -327,12 +344,21 @@ nav{
     align-items: flex-start;
 
     margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+
+    border-color: var(--col-dark);
+    border-style: solid;
+    border-width: 0.1rem;
+    border-left: none;
+    border-right: none;
+    border-top: none;
 }
 .overlay-back {
-    margin-right: 2rem;
+    margin-right: 1rem;
 }
 .overlay-back-icon {
-    height: 2.5rem;
+    width: 2rem;
+    margin-top: 0.25rem;
 }
 
 .overlay{
@@ -352,10 +378,33 @@ nav{
 
 }
 
-.fav-inner, .profile-inner{
+.overlay-inner{
     max-width: 540px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* .fav-container{} */
+
+.fav-dummie {
+    width: 100%;
+    height: 8rem;
+
+    border-radius: 1rem;
+
+    border-color: var(--col-dark);
+    border-style: dashed;
+    border-width: 0.1rem;
+
+    margin-bottom: 1rem;
+
+}
+
+.fav-dummie.small {
+    height: 4rem;
+}
+.fav-dummie.smaller {
+    height: 2rem;
 }
 
 .fav-title{
@@ -363,7 +412,6 @@ nav{
 }
 
 .fav-subheader{
-    font-size: 1.25rem;
     margin-bottom: 2rem;
 }
 
@@ -371,14 +419,19 @@ nav{
     font-size: 1rem;
 }
 
+.clear-favs-cont{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
 #clear-favs{
     font-size: 1.2rem;
     font-weight: 400;
     text-decoration: underline;
-
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-
 }
 
 /***********************************************************************/
@@ -455,15 +508,17 @@ nav{
 /***********************************************************************/
 
 .contact-box{
-    background-color: white;
-    padding: 1rem;
+    background-color: var(--col-highlight);
+    padding: 1rem 2rem;
 
     border-radius: 1rem;
 
     margin-bottom: 1rem;
 }
 .contact-box-head{
-    padding-bottom: 0.5rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    /* margin-bottom: 1rem; */
     border-color: var(--col-mid);
     border-style: solid;
     border-width: 0.1rem;
@@ -477,7 +532,9 @@ nav{
     justify-content: flex-start;
     align-items: center;
 
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+    /* margin-bottom: 1rem; */
+    padding-bottom: 0.5rem;
 
     border-color: var(--col-mid);
     border-style: solid;
@@ -485,7 +542,14 @@ nav{
     border-left: none;
     border-right: none;
     border-top: none;
+
+    text-decoration: none;
 }
+
+.contact-item:last-child{
+    border: none;
+}
+
 .contact-icon{
     height: 1.5rem;
     margin-right: 1rem;
