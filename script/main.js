@@ -1,5 +1,5 @@
 import { parse } from '../libs/vanillaes-csv/index.js'
-import {createDomItem} from './domitem.js'
+import { createDomItem } from './domitem.js'
 
 let items = []
 
@@ -30,7 +30,6 @@ let getNParseData = async () => {
         items.push(item)
     }
 }
-
 let placeData = async () => {
     await getNParseData()
 
@@ -40,179 +39,191 @@ let placeData = async () => {
 
 }
 
+/***************************************************************** */
 
-let pageInteractions = () => {
-    $("#accordion").accordion({
-        icons: false,
-        heightStyle: "content",
-        active: false,
-        collapsible: true,
-        header: ".food-title"
-    });
+let pageWidth = $(window).width()
 
-    $( "#dialog" ).dialog({
-        autoOpen: false,
-        modal: true,
-        draggable: false,
-        closeText: "X",
-        width: $(window).width()*0.95,
-        open: ()=>{
-            $('body').addClass('scrolloff')
-            $('.ui-widget-overlay').bind('click',function(){
-                $('#dialog').dialog('close');
+window.pageInteractions = {
+    initDialog: () => {
+        $("#dialog").dialog({
+            autoOpen: false,
+            modal: true,
+            draggable: false,
+            closeText: "X",
+            width: pageWidth * 0.95,
+            maxWidth: 540,
+            open: () => {
+                $('body').addClass('scrolloff')
+                $('.ui-widget-overlay').bind('click', function () {
+                    $('#dialog').dialog('close');
+                })
+            },
+            close: () => {
+                $('body').removeClass('scrolloff')
+            }
+        });
+    },
+    initAccordion: () => {
+        $("#accordion").accordion({
+            icons: false,
+            heightStyle: "content",
+            active: false,
+            collapsible: true,
+            header: ".food-title"
+        });
+    },
+    initPage: () => {
+        pageInteractions.initAccordion()
+        pageInteractions.initDialog()
+
+        $(".item-icons").on("click", function () {
+            $("#dialog").dialog("open");
+        });
+
+
+        let itemsQuant = $(".item").length
+        for (let i = 0; i < itemsQuant; i++) {
+            $(`#item${i}`).on('click', () => {
+                let id = `item${i}`
+                favs.toggleFavItem(id)
             })
-        },
-        close: ()=>{
-            $('body').removeClass('scrolloff')
         }
-    });
 
+        $('#clear-favs').hide()
 
-    $( ".item-icons" ).on( "click", function() {
-        $( "#dialog" ).dialog( "open" );
-    });
+        $('#fav-toggle').on('click', favs.toggleView)
 
-    // $('.fav-icon').fadeTo(0, 0)
+        $('#profile-toggle').on('click', profile.toggleView)
 
+        $('#clear-favs').on('click', favs.clearFavs)
 
-    let itemsQuant = $(".item").length
-
-    for (let i = 0; i < itemsQuant; i++) {
-        $(`#item${i}`).on('click', () => {
-            let id = `item${i}`
-            // console.log(id)
-            toggleFavItem(id)
+        $('.overlay-back').on('click', ()=>{
+            if (profile.isOpen) {
+                profile.toggleView()
+            }
+            if (favs.isOpen) {
+                favs.toggleView()
+            }
         })
-
     }
 
-    // $('#fav').hide()
-    $('#clear-favs').hide()
+}
 
-    $('#fav-toggle').on('click', () => {
-        $('#fav').toggle()
-        $('body').toggleClass('scrolloff')
-        // $('nav').toggleClass('is--fav')
-        $('.nav-icon.navfav-on').toggleClass('is--active')
-        $('.nav-icon.navfav-off').toggleClass('is--active')
+/***************************************************************** */
 
-        // if($('#profile').is(":visible")){
-        //     $('#profile').hide()
-        //     $('.nav-icon.navprofile').removeClass('is--active')
-        // }
-        
+window.favs = {
+    isOpen: false,
+    toggleFavItem: (id) => {
+        let checkIfAlreadyFav = items.find(i => { return i.id === id && i.isFav })
+        if (checkIfAlreadyFav) {
+            favs.removeItemFromFav(id)
+        } else {
+            favs.addItemToFav(id)
+        }
+    },
+    addItemToFav: (id) => {
+
+        items.find(i => { return i.id === id }).isFav = true
+
+
+        let $domItem = $(`#${id}`)
+        $domItem.find('.fav-icon-on').show()
+        $domItem.find('.fav-icon-off').hide()
+
+        let $favDiv = $domItem.clone().attr("id", `fav-${id}`);
+        $favDiv.find('.item-image').remove()
+        $favDiv.appendTo('#fav-container')
+
+        $domItem.addClass('is--fav')
+
+        $('#clear-favs').show()
+
         updateNav()
-    })
 
-    $('#profile-toggle').on('click', () => {
-        $('#profile').toggle()
-        $('body').toggleClass('scrolloff')
-        $('.nav-icon.navprofile').toggleClass('is--active')
+        $favDiv.find('.fav-icon').on('click', () => {
+            $favDiv.remove()
+            favs.removeItemFromFav(id)
+        })
+    },
+    removeItemFromFav: (id) => {
 
-        // if($('#fav').is(":visible")){
-        //     $('#fav').hide()
-        //     $('.nav-icon.navfav-on').removeClass('is--active')
-        //     $('.nav-icon.navfav-off').removeClass('is--active')
-        // }
-    })
-
-    $('#clear-favs').on('click', clearFavs)
-}
+        let $domItem = $(`#${id}`)
 
 
+        $domItem.removeClass('is--fav')
+        $domItem.find('.fav-icon-on').hide()
+        $domItem.find('.fav-icon-off').show()
 
+        let $favDiv = $(`#fav-${id}`)
+        $favDiv.remove()
 
-let buildPage = async () => {
-    await placeData()
+        items.find(i => { return i.id === id }).isFav = false
 
-    pageInteractions()
+        updateNav()
 
-}
+    },
+    clearFavs: () => {
+        $('#fav-container').empty()
 
-buildPage()
+        $('.item').removeClass('is--fav')
 
+        $('#clear-favs').hide()
 
+        $('#fav-toggle').click()
 
+        updateNav()
+    },
+    toggleView: () => {
 
-let toggleFavItem = (id) => {
-    let checkIfAlreadyFav = items.find(i => { return i.id === id && i.isFav })
-    if (checkIfAlreadyFav) {
-        // console.log('was in fav')
-        removeItemFromFav(id)
-    } else {
-        addItemToFav(id)
+        if (profile.isOpen) {
+            profile.toggleView()
+        }
+
+        if (favs.isOpen) {
+            $('#fav').hide()
+            $('body').removeClass('scrolloff')
+            $('.nav-icon.navfav-on').removeClass('is--active')
+            $('.nav-icon.navfav-off').removeClass('is--active')
+        } else {
+            $('#fav').show()
+            $('body').addClass('scrolloff')
+            $('.nav-icon.navfav-on').addClass('is--active')
+            $('.nav-icon.navfav-off').addClass('is--active')
+        }
+
+        favs.isOpen = !favs.isOpen
+
+        updateNav()
+
     }
 
-    // console.log('items after toggleFavItem', items)
-
 }
 
+window.profile = {
+    isOpen: false,
+    toggleView: () => {
 
-let addItemToFav = (id) => {
+        if (favs.isOpen) {
+            favs.toggleView()
+        }
 
-    items.find(i => { return i.id === id }).isFav = true
+        if (profile.isOpen) {
+            $('#profile').hide()
+            $('body').removeClass('scrolloff')
+            $('.nav-icon.navprofile').removeClass('is--active')
+        } else {
+            $('#profile').show()
+            $('body').addClass('scrolloff')
+            $('.nav-icon.navprofile').addClass('is--active')
+        }
 
+        profile.isOpen = !profile.isOpen
 
-    let $domItem = $(`#${id}`)
-    $domItem.find('.fav-icon-on').show()
-    $domItem.find('.fav-icon-off').hide()
-
-    let $favDiv = $domItem.clone().attr("id", `fav-${id}`);
-    $favDiv.find('.item-image').remove()
-    $favDiv.appendTo('#fav-container')
-
-    $domItem.addClass('is--fav')
-
-    $('#clear-favs').show()
-
-    // console.log('items after adding item', items)
-
-    updateNav()
-
-    $favDiv.find('.fav-icon').on('click', () => {
-        $favDiv.remove()
-        removeItemFromFav(id)
-    })
+    }
 }
 
-let removeItemFromFav = (id) => {
-
-    let $domItem = $(`#${id}`)
-    
-
-    $domItem.removeClass('is--fav')
-    // $domItem.find('.fav-icon').fadeTo(0, 0)
-    $domItem.find('.fav-icon-on').hide()
-    $domItem.find('.fav-icon-off').show()
-
-    let $favDiv = $(`#fav-${id}`)
-    $favDiv.remove()
-
-    items.find(i => { return i.id === id }).isFav = false
-
-    // console.log('items after removing item', items)
-
-    updateNav()
-
-}
-
-let clearFavs = () => {
-    $('#fav-container').empty()
-
-    $('.item').removeClass('is--fav')
-    // $(`.fav-icon`).fadeTo(0, 0)
-
-    $('#clear-favs').hide()
-
-    $('#fav-toggle').click()
-
-    updateNav()
-
-    // console.log('cleared')
-}
-
-let updateNav = ()=>{
-    if ( $('#fav-container').children().length > 0 ) {
+let updateNav = () => {
+    if ($('#fav-container').children().length > 0) {
         $('.navfav-on').show()
         $('.navfav-off').hide()
     } else {
@@ -224,3 +235,21 @@ let updateNav = ()=>{
         $('#clear-favs').hide()
     }
 }
+
+
+/***************************************************************** */
+
+const buildPage = (async () => {
+    await placeData()
+    pageInteractions.initPage()
+})()
+
+$(window).on("resize", function () {
+    pageWidth = $(window).width()
+    pageInteractions.initDialog()
+});
+
+
+$(window).on("load", function () {
+    $('#loading').hide()
+});

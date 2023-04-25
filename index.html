@@ -87,10 +87,17 @@
         </nav>
     </main>
 
-    <div id="fav">
+    <div id="fav" class="overlay">
         <div class="fav-inner">
-            <div class="fav-title">
+
+            <div class="overlay-head">
+                <div class="overlay-back">
+                    <img class="overlay-back-icon" src="./img/icons/icon-arrow-left.svg"/>
+                </div>
                 <h1>Preferiti</h1>
+            </div>
+
+            <div class="fav-title">
                 <p id="no-fav-text" class="fav-subheader">
                     Clicca su un prodotto per aggiungerlo alla lista dei preferiti.
                 </p>
@@ -102,14 +109,51 @@
         </div>
     </div>
 
-    <div id="profile">
+    <div id="profile"  class="overlay">
         <div class="profile-inner">
-            <h1>Il nome del tuo ristorante</h1>
-            <p>Rimani in contatto con noi</p>
-            <p>+39 333 1234567</p>
-            <p>info@ristorante.it</p>
-            <a href="#" target="_blank">Facebook</a>
-            <a href="#" target="_blank">Instagram</a>
+            <div class="overlay-head">
+                <div class="overlay-back">
+                    <img class="overlay-back-icon" src="./img/icons/icon-arrow-left.svg"/>
+                </div>
+                <h1>Profilo</h1>
+            </div>
+
+            <div class="contact-box">
+                <div class="contact-box-head">
+                    <h3>Restiamo in contatto</h3>
+                </div>
+                <div class="contact-item">
+                    <img class="contact-icon" src="./img/icons/icon-call.svg"/>
+                    <p>+39 0967 1234567</p>
+                </div>
+                <div class="contact-item">
+                    <img class="contact-icon" src="./img/icons/icon-whatsapp.svg"/>
+                    <p>+39 333 1234567</p>
+                </div>
+                <div class="contact-item">
+                    <img class="contact-icon" src="./img/icons/icon-mail.svg">
+                    <p>info@ristorante.it</p>
+                </div>
+            </div>
+
+            <div class="contact-box">
+                <div class="contact-box-head">
+                    <h3>Seguici sui social</h3>
+                </div>
+                <!-- <div class="contact-item"> -->
+                    <a class="contact-item" href="#" target="_blank">
+                    <img class="contact-icon" src="./img/icons/icon-facebook.svg"/>
+                    <p>Facebook</p>
+                    </a>
+                <!-- </div>
+                <div class="contact-item"> -->
+                    <a class="contact-item" href="#" target="_blank">
+                    <img class="contact-icon" src="./img/icons/icon-instagram.svg"/>
+                    <p>Instagram</p>
+                </a>
+                <!-- </div> -->
+            </div>
+
         </div>
     </div>
 
@@ -128,7 +172,11 @@
         </div>
     </div>
 
+
     <script src="./libs/jquery-3.6.4.min.js"></script>
+    <script>
+        $("<div>", { "id": "loading" }).prependTo('body')
+    </script>
     <script src="./libs/jquery-ui-1.13.2/jquery-ui.js"></script>
 
     <script type="module" src="./script/main.js"></script>
