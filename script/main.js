@@ -173,6 +173,12 @@ window.favs = {
 
         let $favDiv = $domItem.clone().attr("id", `fav-${id}`).addClass('is--favlist')
         $favDiv.find('.item-image').remove()
+        $favDiv.find('a').css('pointer-events','none');
+        $favDiv.find('a').click(function(e) {
+            e.preventDefault();
+            e.stopPropagation()
+        });
+        
         $favDiv.prependTo('#fav-container')
 
         $domItem.addClass('is--fav')
